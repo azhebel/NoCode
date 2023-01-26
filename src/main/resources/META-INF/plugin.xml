@@ -1,0 +1,32 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.example.NoCode</id>
+    <name>No Code</name>
+    <vendor email="alexey.zhebel@jetbrains.com" url="https://www.jetbrains.com">JetBrains</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+        <![CDATA[
+    <p>Adds support for <a href="https://github.com/kelseyhightower/nocode">No Code</a>.</p>
+
+    <ul>
+        <li>Project wizard for new No Code projects</li>
+        <li>No coding assistance for <code>.nocode</code> files</li>
+        <li>Run configuration that enables you to not run anything</li>
+    </ul>
+
+    <i>Write nothing; deploy nowhere.</i> (c)
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+</idea-plugin>
