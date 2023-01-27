@@ -1,0 +1,20 @@
+{
+  parserClass="com.example.nocode.language.parser.NoCodeParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="NoCode"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.example.nocode.language.psi"
+  psiImplPackage="com.example.nocode.language.psi.impl"
+
+  elementTypeHolderClass="com.example.nocode.language.psi.NoCodeTypes"
+  elementTypeClass="com.example.nocode.language.psi.NoCodeElementType"
+  tokenTypeClass="com.example.nocode.language.psi.NoCodeTokenType"
+}
+
+simpleFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY

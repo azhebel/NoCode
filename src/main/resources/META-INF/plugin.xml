@@ -28,10 +28,18 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="No Code File"
-                implementationClass="com.example.nocode.NoCodeFileType"
+                implementationClass="com.example.nocode.language.NoCodeFileType"
                 fieldName="INSTANCE"
                 language="NoCode"
                 extensions="nocode"/>
+        <lang.parserDefinition
+                language="NoCode"
+                implementationClass="com.example.nocode.language.NoCodeParserDefinition"/>
+        <lang.syntaxHighlighterFactory
+                language="NoCode"
+                implementationClass="com.example.nocode.language.NoCodeSyntaxHighlighterFactory"/>
+        <colorSettingsPage
+                implementation="com.example.nocode.language.NoCodeColorSettingsPage"/>
     </extensions>
 
 </idea-plugin>

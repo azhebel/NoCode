@@ -44,4 +44,6 @@ tasks {
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
+
+    sourceSets["main"].java.srcDirs("src/main/gen")
 }

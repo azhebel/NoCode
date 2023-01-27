@@ -1,4 +1,4 @@
-package com.example.nocode
+package com.example.nocode.language
 
 import com.intellij.openapi.fileTypes.LanguageFileType
 import javax.swing.Icon
