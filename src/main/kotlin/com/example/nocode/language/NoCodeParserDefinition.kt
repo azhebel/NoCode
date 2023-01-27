@@ -12,7 +12,6 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import com.example.nocode.language.parser.NoCodeParser
 import com.example.nocode.language.psi.NoCodeFile
-import com.example.nocode.language.psi.NoCodeTokenSets
 import com.example.nocode.language.psi.NoCodeTypes
 
 
@@ -22,7 +21,7 @@ class NoCodeParserDefinition : ParserDefinition {
     }
 
     override fun getCommentTokens(): TokenSet {
-        return NoCodeTokenSets.COMMENTS
+        return TokenSet.EMPTY
     }
 
     override fun getStringLiteralElements(): TokenSet {

@@ -10,11 +10,8 @@ public interface NoCodeTypes {
 
   IElementType PROPERTY = new NoCodeElementType("PROPERTY");
 
-  IElementType COMMENT = new NoCodeTokenType("COMMENT");
-  IElementType CRLF = new NoCodeTokenType("CRLF");
+  IElementType ITEM_ = new NoCodeTokenType("item_");
   IElementType KEY = new NoCodeTokenType("KEY");
-  IElementType SEPARATOR = new NoCodeTokenType("SEPARATOR");
-  IElementType VALUE = new NoCodeTokenType("VALUE");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {

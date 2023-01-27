@@ -36,53 +36,15 @@ public class NoCodeParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // property|COMMENT|CRLF
-  static boolean item_(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "item_")) return false;
-    boolean r;
-    r = property(b, l + 1);
-    if (!r) r = consumeToken(b, COMMENT);
-    if (!r) r = consumeToken(b, CRLF);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // (KEY? SEPARATOR VALUE?) | KEY
+  // KEY
   public static boolean property(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property")) return false;
-    if (!nextTokenIs(b, "<property>", KEY, SEPARATOR)) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, PROPERTY, "<property>");
-    r = property_0(b, l + 1);
-    if (!r) r = consumeToken(b, KEY);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // KEY? SEPARATOR VALUE?
-  private static boolean property_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_0")) return false;
+    if (!nextTokenIs(b, KEY)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = property_0_0(b, l + 1);
-    r = r && consumeToken(b, SEPARATOR);
-    r = r && property_0_2(b, l + 1);
-    exit_section_(b, m, null, r);
+    r = consumeToken(b, KEY);
+    exit_section_(b, m, PROPERTY, r);
     return r;
-  }
-
-  // KEY?
-  private static boolean property_0_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_0_0")) return false;
-    consumeToken(b, KEY);
-    return true;
-  }
-
-  // VALUE?
-  private static boolean property_0_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_0_2")) return false;
-    consumeToken(b, VALUE);
-    return true;
   }
 
   /* ********************************************************** */
@@ -91,7 +53,7 @@ public class NoCodeParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "simpleFile")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!item_(b, l + 1)) break;
+      if (!consumeToken(b, ITEM_)) break;
       if (!empty_element_parsed_guard_(b, "simpleFile", c)) break;
     }
     return true;

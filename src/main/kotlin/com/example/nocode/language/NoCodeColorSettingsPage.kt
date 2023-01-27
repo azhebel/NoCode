@@ -18,18 +18,7 @@ class NoCodeColorSettingsPage : ColorSettingsPage {
     }
 
     override fun getDemoText(): String {
-        return """# You are reading the ".properties" entry.
-! The exclamation mark can also mark text as comments.
-website = https://en.wikipedia.org/
-language = English
-# The backslash below tells the application to continue reading
-# the value onto the next line.
-message = Welcome to \
-          Wikipedia!
-# Add spaces to the key
-key\ with\ spaces = This is the value that could be looked up with the key "key with spaces".
-# Unicode
-tab : \u0009"""
+        return """Code in a No Code file is bad."""
     }
 
     override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey>? {
@@ -50,10 +39,7 @@ tab : \u0009"""
 
     companion object {
         private val DESCRIPTORS = arrayOf(
-            AttributesDescriptor("Key", NoCodeSyntaxHighlighter.KEY),
-            AttributesDescriptor("Separator", NoCodeSyntaxHighlighter.SEPARATOR),
-            AttributesDescriptor("Value", NoCodeSyntaxHighlighter.VALUE),
-            AttributesDescriptor("Bad value", NoCodeSyntaxHighlighter.BAD_CHARACTER)
+            AttributesDescriptor("Code", NoCodeSyntaxHighlighter.BAD_CHARACTER)
         )
     }
 }
