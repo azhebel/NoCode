@@ -40,6 +40,8 @@
                 implementationClass="com.example.nocode.language.NoCodeSyntaxHighlighterFactory"/>
         <colorSettingsPage
                 implementation="com.example.nocode.language.NoCodeColorSettingsPage"/>
+
+        <projectTemplatesFactory implementation="com.example.nocode.project.NoCodeProjectTemplatesFactory"/>
     </extensions>
 
 </idea-plugin>
