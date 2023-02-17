@@ -23,6 +23,13 @@
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java-capable</depends>
+
+    <actions>
+        <action id="NewNoCodeFile" class="com.example.nocode.language.CreateNoCodeFileAction">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewDir"/>
+        </action>
+    </actions>
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
@@ -32,16 +39,23 @@
                 fieldName="INSTANCE"
                 language="NoCode"
                 extensions="nocode"/>
-        <lang.parserDefinition
-                language="NoCode"
+
+        <lang.parserDefinition language="NoCode"
                 implementationClass="com.example.nocode.language.NoCodeParserDefinition"/>
-        <lang.syntaxHighlighterFactory
-                language="NoCode"
+
+        <lang.syntaxHighlighterFactory language="NoCode"
                 implementationClass="com.example.nocode.language.NoCodeSyntaxHighlighterFactory"/>
+
         <colorSettingsPage
                 implementation="com.example.nocode.language.NoCodeColorSettingsPage"/>
 
         <projectTemplatesFactory implementation="com.example.nocode.project.NoCodeProjectTemplatesFactory"/>
+
+        <intentionAction>
+            <className>com.example.nocode.language.NoCodeRemoveCodeQuickFix</className>
+        </intentionAction>
+
+        <annotator implementationClass="com.example.nocode.language.NoCodeAnnotator" language="NoCode"/>
     </extensions>
 
 </idea-plugin>

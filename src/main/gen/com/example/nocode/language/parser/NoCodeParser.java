@@ -32,29 +32,41 @@ public class NoCodeParser implements PsiParser, LightPsiParser {
   }
 
   static boolean parse_root_(IElementType t, PsiBuilder b, int l) {
-    return simpleFile(b, l + 1);
+    return noCodeFile(b, l + 1);
   }
 
   /* ********************************************************** */
-  // KEY
-  public static boolean property(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property")) return false;
-    if (!nextTokenIs(b, KEY)) return false;
+  // (CHAR)
+  public static boolean code(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "code")) return false;
+    if (!nextTokenIs(b, CHAR)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeToken(b, KEY);
-    exit_section_(b, m, PROPERTY, r);
+    r = consumeToken(b, CHAR);
+    exit_section_(b, m, CODE, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // (code)
+  static boolean item_(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "item_")) return false;
+    if (!nextTokenIs(b, CHAR)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = code(b, l + 1);
+    exit_section_(b, m, null, r);
     return r;
   }
 
   /* ********************************************************** */
   // item_*
-  static boolean simpleFile(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "simpleFile")) return false;
+  static boolean noCodeFile(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "noCodeFile")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!consumeToken(b, ITEM_)) break;
-      if (!empty_element_parsed_guard_(b, "simpleFile", c)) break;
+      if (!item_(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "noCodeFile", c)) break;
     }
     return true;
   }

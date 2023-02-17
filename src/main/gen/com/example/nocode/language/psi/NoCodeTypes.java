@@ -8,16 +8,15 @@ import com.example.nocode.language.psi.impl.*;
 
 public interface NoCodeTypes {
 
-  IElementType PROPERTY = new NoCodeElementType("PROPERTY");
+  IElementType CODE = new NoCodeElementType("CODE");
 
-  IElementType ITEM_ = new NoCodeTokenType("item_");
-  IElementType KEY = new NoCodeTokenType("KEY");
+  IElementType CHAR = new NoCodeTokenType("CHAR");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == PROPERTY) {
-        return new NoCodePropertyImpl(node);
+      if (type == CODE) {
+        return new NoCodeCodeImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

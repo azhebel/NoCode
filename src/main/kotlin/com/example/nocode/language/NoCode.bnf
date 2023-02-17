@@ -13,6 +13,6 @@
   tokenTypeClass="com.example.nocode.language.psi.NoCodeTokenType"
 }
 
-simpleFile ::= item_*
-
-property ::= KEY
+noCodeFile ::= item_*
+private item_ ::= (code)
+code ::= (CHAR)

@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public class NoCodeVisitor extends PsiElementVisitor {
 
-  public void visitProperty(@NotNull NoCodeProperty o) {
+  public void visitCode(@NotNull NoCodeCode o) {
     visitPsiElement(o);
   }
 

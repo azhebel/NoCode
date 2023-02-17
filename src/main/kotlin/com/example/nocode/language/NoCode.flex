@@ -15,6 +15,9 @@ import com.intellij.psi.TokenType;
 %eof{  return;
 %eof}
 
+CHAR=\.
+CODE=\.+
+
 %state WAITING_VALUE
 
 %%

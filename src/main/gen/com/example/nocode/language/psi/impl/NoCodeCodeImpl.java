@@ -11,14 +11,14 @@ import static com.example.nocode.language.psi.NoCodeTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.example.nocode.language.psi.*;
 
-public class NoCodePropertyImpl extends ASTWrapperPsiElement implements NoCodeProperty {
+public class NoCodeCodeImpl extends ASTWrapperPsiElement implements NoCodeCode {
 
-  public NoCodePropertyImpl(@NotNull ASTNode node) {
+  public NoCodeCodeImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull NoCodeVisitor visitor) {
-    visitor.visitProperty(this);
+    visitor.visitCode(this);
   }
 
   @Override
